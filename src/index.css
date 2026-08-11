@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+/* =========================================================
+   THEME CONFIGURATION (Tailwind v4 CSS-native)
+   ========================================================= */
+@theme {
+  /* Colors */
+  --color-bg-primary: #090909;
+  --color-bg-secondary: #111111;
+  --color-bg-card: #161616;
+  --color-bg-elevated: #1e1e1e;
+
+  --color-luxury-gold: #D4AF37;
+  --color-luxury-gold-light: #F3E5AB;
+  --color-luxury-gold-dark: #997A15;
+  --color-luxury-wine: #8B1E3F;
+  --color-luxury-wine-light: #C73E67;
+
+  --color-text-main: #F5F5F5;
+  --color-text-muted: #9CA3AF;
+  --color-text-dark: #6B7280;
+
+  /* Typography */
+  --font-family-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Animations */
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 3s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 2.5s infinite linear;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+
+  /* Keyframes */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes glow {
+    0% { opacity: 0.4; filter: blur(20px); }
+    100% { opacity: 0.8; filter: blur(30px); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* =========================================================
+   BASE RESET & GLOBAL STYLES
+   ========================================================= */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #090909;
+    color: #F5F5F5;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-feature-settings: "ss01", "ss02";
+    letter-spacing: -0.02em;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #090909; }
+  ::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a2a2a; }
+}
+
+/* =========================================================
+   UTILITY CLASSES
+   ========================================================= */
+@layer utilities {
+  /* Background patterns */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-radial-vignette {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -5%, rgba(212, 175, 55, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 20%, rgba(139, 30, 63, 0.05) 0%, transparent 50%);
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2C266 45%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-subtle-gradient {
+    background: linear-gradient(180deg, #F5F5F5 0%, #9CA3AF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow effects */
+  .gold-glow {
+    box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.3);
+  }
+
+  .gold-border-glow {
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1), inset 0 0 20px rgba(212, 175, 55, 0.02);
+  }
+
+  .wine-border-glow {
+    border: 1px solid rgba(139, 30, 63, 0.4);
+    box-shadow: 0 0 15px rgba(139, 30, 63, 0.15);
+  }
+
+  /* Glassmorphism card */
+  .luxury-card {
+    background: rgba(17, 17, 17, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .luxury-card:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* Shimmer loading effect */
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0) 0%,
+      rgba(212, 175, 55, 0.1) 50%,
+      rgba(212, 175, 55, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite linear;
+  }
+
+  /* Section divider line */
+  .section-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  }
+
+  /* Code block style */
+  .code-surface {
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* =========================================================
+   COMPONENT OVERRIDES
+   ========================================================= */
+
+/* Focus ring - premium */
+:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Smooth img rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Prevent overscroll color flash */
+html {
+  background-color: #090909;
+}
+
+/* Anchor smooth scroll offset for fixed nav */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Font utility classes for Tailwind v4 */
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.font-sans {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Prevent horizontal overflow */
+body {
+  overflow-x: hidden;
+}
