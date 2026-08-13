@@ -1,16 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, TrendingUp, Cpu, Sparkles, ArrowRight } from 'lucide-react';
-import { PHILOSOPHY_PILLARS } from '../../data/portfolioData';
+import { Terminal, Cpu, Sparkles, ArrowRight, ShieldCheck, RefreshCw } from 'lucide-react';
+import { EXPERIENCE, PHILOSOPHY_PILLARS, PROJECTS } from '../../data/portfolioData';
 
 const iconMap: Record<string, React.ReactNode> = {
   Terminal: <Terminal className="w-5 h-5 text-[#D4AF37]" />,
-  TrendingUp: <TrendingUp className="w-5 h-5 text-[#D4AF37]" />,
-  Cpu: <Cpu className="w-5 h-5 text-[#8B1E3F]" />,
+  Cpu: <Cpu className="w-5 h-5 text-[#D4AF37]" />,
+  ShieldCheck: <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />,
+  RefreshCw: <RefreshCw className="w-5 h-5 text-[#D4AF37]" />,
   Sparkles: <Sparkles className="w-5 h-5 text-[#D4AF37]" />,
 };
 
 export const Philosophy: React.FC = () => {
+  const featuredProjectCount = PROJECTS.filter((project) => project.featured).length;
+  const internshipCount = EXPERIENCE.filter((item) => item.type === 'Internship').length;
+  const stats = [
+    { label: 'B.Tech • Information Technology', value: '2023–27' },
+    { label: 'Industry Internship', value: String(internshipCount) },
+    { label: 'Featured Projects', value: String(featuredProjectCount) },
+    { label: 'Primary Focus', value: 'AI + Full-Stack' },
+  ];
   return (
     <section id="about" className="py-24 relative bg-[#090909]">
       {/* Subtle section separator */}
@@ -33,17 +42,17 @@ export const Philosophy: React.FC = () => {
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                The real work is{' '}
-                <span className="text-gold-gradient">making systems survive reality.</span>
+                I don't just build features. I build{' '}
+                <span className="text-gold-gradient">systems that can evolve.</span>
               </h2>
 
               <p className="text-base text-gray-400 leading-relaxed">
-                The difference between a good engineer and a strong one is not how much code they can produce. It is how clearly they reason about failure, cost, latency, and iteration under real constraints.
+                I care about understanding the problem before choosing the technology. Whether I'm building an AI system, a full-stack application, or a data workflow, I focus on clear architecture, useful intelligence, reliable execution, and continuous iteration.
               </p>
 
               <div className="flex items-center gap-2 text-xs font-mono text-gray-500 group">
                 <a href="#projects" className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
-                  See how this philosophy shows up in production
+                  See how this thinking shows up in my projects
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
@@ -57,14 +66,9 @@ export const Philosophy: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="grid grid-cols-2 gap-3"
             >
-              {[
-                { label: 'Years Building', value: '3+' },
-                { label: 'Systems Shipped', value: '10+' },
-                { label: 'Production Load', value: '50k req/s' },
-                { label: 'LLM Workflows', value: '4+' },
-              ].map((stat, i) => (
-                <div key={i} className="p-3 rounded-xl bg-[#111111] border border-white/8">
-                  <div className="text-lg font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
+              {stats.map((stat) => (
+                <div key={stat.label} className="p-3 rounded-xl bg-[#111111] border border-white/8">
+                  <div className="text-lg font-bold text-white break-words" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
                   <div className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">{stat.label}</div>
                 </div>
               ))}
@@ -116,12 +120,10 @@ export const Philosophy: React.FC = () => {
             >
               <div className="text-3xl text-[#D4AF37] font-serif leading-none mb-4 opacity-50">"</div>
               <p className="text-sm text-gray-200 leading-relaxed italic">
-                Average developers learn syntax. Exceptional engineers internalize tradeoffs —
-                they know when <span className="text-[#D4AF37] not-italic font-semibold">not</span> to
-                use a technology, and why the simplest solution that could possibly work is often the right one.
+                I don't want to just make things work. I want to understand why they work, where they break, and how to make the next version better.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {['P99 Latency First', 'Type-Safe Contracts', 'Deterministic AI', 'Zero Downtime'].map((tag) => (
+                {['Clean Architecture', 'Useful AI', 'Reliable Systems', 'Continuous Iteration'].map((tag) => (
                   <span key={tag} className="px-2.5 py-1 rounded-md bg-[#D4AF37]/8 border border-[#D4AF37]/20 text-[11px] font-mono text-[#D4AF37]">
                     {tag}
                   </span>

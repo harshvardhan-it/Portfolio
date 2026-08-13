@@ -1,27 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gauge, Layers3, ShieldCheck, Rocket } from 'lucide-react';
+import { Cpu, Gauge, Layers3, ShieldCheck } from 'lucide-react';
 
 const points = [
   {
-    title: 'Systems judgment',
-    copy: 'I optimize for failure modes, observability, and maintainability before I optimize for novelty. Good systems are boring in the right places.',
+    title: 'AI-first thinking',
+    copy: 'I focus on where intelligence actually adds value — from prediction and automation to decision support — rather than adding AI simply because the stack can support it.',
+    icon: <Cpu className="w-5 h-5 text-[#D4AF37]" />,
+  },
+  {
+    title: 'Data-driven decisions',
+    copy: 'I turn raw data into metrics, insights, and actionable signals — connecting analytics with the product decisions they are meant to improve.',
     icon: <Gauge className="w-5 h-5 text-[#D4AF37]" />,
   },
   {
-    title: 'Product instincts',
-    copy: 'The best architecture is the one that helps a product feel fast, trustworthy, and inexpensive to operate at scale.',
-    icon: <Rocket className="w-5 h-5 text-[#D4AF37]" />,
-  },
-  {
-    title: 'Execution discipline',
-    copy: 'I ship with clear contracts, testable boundaries, and deployment habits that make teams safer—not slower.',
-    icon: <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />,
-  },
-  {
-    title: 'Cross-stack fluency',
-    copy: 'I’m comfortable moving from UI behavior to API contracts to runtime performance without losing the thread of the product.',
+    title: 'Full-stack ownership',
+    copy: 'I’m comfortable moving across the product lifecycle — from interfaces and APIs to databases, authentication, integrations, and deployment.',
     icon: <Layers3 className="w-5 h-5 text-[#D4AF37]" />,
+  },
+  {
+    title: 'Engineering discipline',
+    copy: 'I care about clean boundaries, maintainable code, reliable integrations, and deployment practices that make products easier to evolve.',
+    icon: <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />,
   },
 ];
 
@@ -39,13 +39,13 @@ export const SignalStack: React.FC = () => {
           className="max-w-3xl mb-12"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4AF37]">
-            01.5 / WHAT STRONG TEAMS LOOK FOR
+            01.5 / HOW I THINK ABOUT BUILDING
           </div>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-white tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            The signal is not the stack. It is the <span className="text-gold-gradient">judgment</span> behind it.
+            The stack gets attention. The <span className="text-gold-gradient">thinking</span> earns trust.
           </h2>
           <p className="mt-4 text-base text-gray-400 leading-relaxed">
-            A senior engineer is judged less by what they can demo and more by how they make tradeoffs under pressure. This is the lens I use.
+            I build at the intersection of AI, data, and full-stack engineering — turning technical capabilities into products that are useful, measurable, and built to last.
           </p>
         </motion.div>
 

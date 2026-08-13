@@ -12,19 +12,52 @@ export const ResumePreview: React.FC = () => {
 
   const handleDownload = () => {
     confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#D4AF37', '#F3E5AB', '#8B1E3F', '#FFFFFF']
+      particleCount: 38,
+      spread: 52,
+      startVelocity: 28,
+      scalar: 0.85,
+      origin: { x: 0.82, y: 0.7 },
+      colors: ['#D4AF37', '#F3E5AB', '#8B1E3F', '#FFFFFF'],
+      ticks: 120,
     });
-    window.open(PERSONAL_INFO.resumeUrl, '_blank');
+
+    const link = document.createElement('a');
+    link.href = PERSONAL_INFO.resumeUrl;
+    link.download = 'Harshvardhan_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
+  const handlePrint = () => {
+    const printFrame = document.createElement('iframe');
+    printFrame.src = PERSONAL_INFO.resumeUrl;
+    printFrame.title = 'Resume print preview';
+    printFrame.style.position = 'fixed';
+    printFrame.style.width = '1px';
+    printFrame.style.height = '1px';
+    printFrame.style.opacity = '0';
+    printFrame.style.pointerEvents = 'none';
+    printFrame.style.border = '0';
+
+    const removePrintFrame = () => {
+      printFrame.remove();
+      window.removeEventListener('afterprint', removePrintFrame);
+    };
+
+    printFrame.addEventListener('load', () => {
+      window.addEventListener('afterprint', removePrintFrame, { once: true });
+      window.setTimeout(() => printFrame.contentWindow?.print(), 250);
+    }, { once: true });
+
+    document.body.appendChild(printFrame);
   };
 
   return (
     <section id="resume" className="py-28 relative bg-[#090909]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="no-print flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-4 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4AF37]">
               07 // INTERACTIVE RESUME HUB
@@ -42,7 +75,7 @@ export const ResumePreview: React.FC = () => {
         </div>
 
         {/* Interactive Resume Card Container */}
-        <SpotlightCard className="p-0 overflow-hidden border border-[#D4AF37]/30">
+        <SpotlightCard className="resume-print-area p-0 overflow-hidden border border-[#D4AF37]/30">
           {/* Resume Navigation Header */}
           <div className="flex flex-wrap items-center justify-between gap-4 p-4 sm:p-6 bg-[#111111] border-b border-white/10">
             <div className="flex items-center gap-3">
@@ -54,7 +87,7 @@ export const ResumePreview: React.FC = () => {
             </div>
 
             {/* View Tabs */}
-            <div className="flex flex-wrap gap-1 p-1 rounded-full bg-black/40 border border-white/10">
+            <div className="no-print flex flex-wrap gap-1 p-1 rounded-full bg-black/40 border border-white/10">
               {(['summary', 'experience', 'projects', 'education'] as const).map((tab) => (
                 <button
                   key={tab}
@@ -160,9 +193,9 @@ export const ResumePreview: React.FC = () => {
           </div>
 
           {/* Footer Bar */}
-          <div className="flex items-center justify-between p-4 bg-[#111111] border-t border-white/10 text-xs font-mono text-gray-400">
+          <div className="no-print flex items-center justify-between p-4 bg-[#111111] border-t border-white/10 text-xs font-mono text-gray-400">
             <span>Candidate Record</span>
-            <button onClick={handleDownload} className="text-[#D4AF37] hover:underline flex items-center gap-1">
+            <button onClick={handlePrint} className="text-[#D4AF37] hover:underline flex items-center gap-1">
               Print / Save PDF <Printer className="w-3.5 h-3.5" />
             </button>
           </div>

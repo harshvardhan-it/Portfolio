@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check, Sparkles, Send } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Copy, Check, Send } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { SpotlightCard } from '../ui/SpotlightCard';
 import { MagneticButton } from '../ui/MagneticButton';
@@ -11,7 +10,8 @@ const formatExternalLabel = (url: string) =>
 
 export const Contact: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'opening' | 'opened' | 'error'>('idle');
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const githubLabel = formatExternalLabel(PERSONAL_INFO.github);
   const linkedinLabel = formatExternalLabel(PERSONAL_INFO.linkedin);
   const [formData, setFormData] = useState({
@@ -28,15 +28,50 @@ export const Contact: React.FC = () => {
     setTimeout(() => setCopied(false), 3000);
   };
 
+  const updateField = (field: keyof typeof formData, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    setErrors((current) => {
+      const { [field]: _, ...remaining } = current;
+      return remaining;
+    });
+    setFormStatus('idle');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#D4AF37', '#F3E5AB', '#8B1E3F']
-    });
+    const nextErrors: Record<string, string> = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formData.name.trim()) nextErrors.name = 'Enter your name or recruiter name.';
+    if (!formData.company.trim()) nextErrors.company = 'Enter your company or organization.';
+    if (!emailPattern.test(formData.email.trim())) nextErrors.email = 'Enter a valid email address.';
+    if (!formData.roleType) nextErrors.roleType = 'Select a target role type.';
+    if (!formData.message.trim()) nextErrors.message = 'Enter opportunity details.';
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      setFormStatus('idle');
+      return;
+    }
+
+    const subject = `Portfolio Inquiry — ${formData.roleType}`;
+    const body = [
+      `Name / Recruiter: ${formData.name.trim()}`,
+      `Company / Organization: ${formData.company.trim()}`,
+      `Email: ${formData.email.trim()}`,
+      `Target Role: ${formData.roleType}`,
+      '',
+      'Message:',
+      formData.message.trim(),
+    ].join('\n');
+
+    try {
+      setFormStatus('opening');
+      window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setFormStatus('opened');
+    } catch {
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -120,72 +155,70 @@ export const Contact: React.FC = () => {
           {/* Right Interactive Form */}
           <div className="lg:col-span-7">
             <SpotlightCard className="p-8 space-y-6">
-              {submitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] flex items-center justify-center text-[#D4AF37]">
-                    <Sparkles className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold font-display text-white">Message Transmitted!</h3>
-                  <p className="text-sm text-gray-300 max-w-md mx-auto">
-                    Thank you for reaching out. I usually review recruiter messages within 2-4 hours.
-                  </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="text-xs font-mono text-[#D4AF37] hover:underline"
-                  >
-                    Send another message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
                   <h3 className="text-xl font-bold font-display text-white mb-2">
                     Send Direct Inquiries
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-gray-400">YOUR NAME / RECRUITER</label>
+                      <label htmlFor="contact-name" className="text-xs font-mono text-gray-400">YOUR NAME / RECRUITER</label>
                       <input
+                        id="contact-name"
                         type="text"
                         required
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={(e) => updateField('name', e.target.value)}
+                        aria-invalid={Boolean(errors.name)}
+                        aria-describedby={errors.name ? 'contact-name-error' : undefined}
                         placeholder="e.g. Hiring team / Engineering recruiter"
                         className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37]"
                       />
+                      {errors.name && <p id="contact-name-error" className="text-xs font-mono text-[#F3E5AB]">{errors.name}</p>}
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-gray-400">COMPANY / ORGANIZATION</label>
+                      <label htmlFor="contact-company" className="text-xs font-mono text-gray-400">COMPANY / ORGANIZATION</label>
                       <input
+                        id="contact-company"
                         type="text"
                         required
                         value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        onChange={(e) => updateField('company', e.target.value)}
+                        aria-invalid={Boolean(errors.company)}
+                        aria-describedby={errors.company ? 'contact-company-error' : undefined}
                         placeholder="e.g. Product engineering org"
                         className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37]"
                       />
+                      {errors.company && <p id="contact-company-error" className="text-xs font-mono text-[#F3E5AB]">{errors.company}</p>}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-gray-400">EMAIL ADDRESS</label>
+                      <label htmlFor="contact-email" className="text-xs font-mono text-gray-400">EMAIL ADDRESS</label>
                       <input
+                        id="contact-email"
                         type="email"
                         required
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) => updateField('email', e.target.value)}
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby={errors.email ? 'contact-email-error' : undefined}
                         placeholder="name@company.com"
                         className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37]"
                       />
+                      {errors.email && <p id="contact-email-error" className="text-xs font-mono text-[#F3E5AB]">{errors.email}</p>}
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-gray-400">TARGET ROLE TYPE</label>
+                      <label htmlFor="contact-role-type" className="text-xs font-mono text-gray-400">TARGET ROLE TYPE</label>
                       <select
+                        id="contact-role-type"
                         value={formData.roleType}
-                        onChange={(e) => setFormData({ ...formData, roleType: e.target.value })}
+                        onChange={(e) => updateField('roleType', e.target.value)}
+                        aria-invalid={Boolean(errors.roleType)}
+                        aria-describedby={errors.roleType ? 'contact-role-type-error' : undefined}
                         className="w-full px-4 py-2.5 rounded-xl bg-[#111111] border border-white/10 text-sm text-white focus:outline-none focus:border-[#D4AF37]"
                       >
                         <option value="Full-Time Software Engineer">Full-Time Software Engineer</option>
@@ -193,26 +226,35 @@ export const Contact: React.FC = () => {
                         <option value="Backend Developer">Backend Developer</option>
                         <option value="Software Engineering Intern">Software Engineering Intern</option>
                       </select>
+                      {errors.roleType && <p id="contact-role-type-error" className="text-xs font-mono text-[#F3E5AB]">{errors.roleType}</p>}
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-gray-400">MESSAGE / OPPORTUNITY DETAILS</label>
+                    <label htmlFor="contact-message" className="text-xs font-mono text-gray-400">MESSAGE / OPPORTUNITY DETAILS</label>
                     <textarea
+                      id="contact-message"
                       rows={4}
                       required
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => updateField('message', e.target.value)}
+                      aria-invalid={Boolean(errors.message)}
+                      aria-describedby={errors.message ? 'contact-message-error' : undefined}
                       placeholder="Share details about the role, tech stack, and interview process..."
                       className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37]"
                     />
+                    {errors.message && <p id="contact-message-error" className="text-xs font-mono text-[#F3E5AB]">{errors.message}</p>}
                   </div>
 
-                  <MagneticButton variant="gold" className="w-full" icon={<Send className="w-4 h-4" />}>
-                    Transmit Direct Message
+                  <MagneticButton type="submit" disabled={formStatus === 'opening'} variant="gold" className="w-full" icon={<Send className="w-4 h-4" />}>
+                    {formStatus === 'opening' ? 'Opening Email Client...' : 'Transmit Direct Message'}
                   </MagneticButton>
+                  <p aria-live="polite" className={`text-xs font-mono ${formStatus === 'error' ? 'text-[#F3E5AB]' : 'text-gray-400'}`}>
+                    {formStatus === 'opening' && 'Email client opened with your inquiry.'}
+                    {formStatus === 'opened' && 'Email client opened with your inquiry.'}
+                    {formStatus === 'error' && 'Unable to open your email client. Please use the direct email address instead.'}
+                  </p>
                 </form>
-              )}
             </SpotlightCard>
           </div>
         </div>

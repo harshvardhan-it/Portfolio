@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface MagneticButtonProps {
@@ -8,6 +8,8 @@ interface MagneticButtonProps {
   variant?: 'gold' | 'outline' | 'dark' | 'wine';
   href?: string;
   icon?: React.ReactNode;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export const MagneticButton: React.FC<MagneticButtonProps> = ({
@@ -16,14 +18,14 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   className = '',
   variant = 'gold',
   href,
-  icon
+  icon,
+  type = 'button',
+  disabled = false,
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - (left + width / 2)) * 0.25;
     const y = (e.clientY - (top + height / 2)) * 0.25;
     setPosition({ x, y });
@@ -45,15 +47,20 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     baseStyle += 'bg-[#8B1E3F] text-white hover:bg-[#9E254A] shadow-[0_0_20px_rgba(139,30,63,0.3)]';
   }
 
-  const content = (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: 'spring', stiffness: 350, damping: 20 }}
-      className={`${baseStyle} ${className}`}
-      onClick={onClick}
+  const sharedProps = {
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave,
+    animate: { x: position.x, y: position.y },
+    transition: { type: 'spring' as const, stiffness: 350, damping: 20 },
+    className: `${baseStyle} ${className} disabled:cursor-not-allowed disabled:opacity-70`,
+    onClick,
+  };
+
+  const buttonContent = (
+    <motion.button
+      type={type}
+      disabled={disabled}
+      {...sharedProps}
     >
       <span className="relative z-10 flex items-center gap-2">
         {children}
@@ -61,16 +68,28 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
       </span>
       {/* Dynamic light streak */}
       <span className="absolute inset-0 bg-gold-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-    </motion.div>
+    </motion.button>
   );
 
   if (href) {
     return (
-      <a href={href} className="inline-block">
-        {content}
+      <a href={href} className="inline-block" onClick={onClick}>
+        <motion.div
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          animate={{ x: position.x, y: position.y }}
+          transition={{ type: 'spring', stiffness: 350, damping: 20 }}
+          className={`${baseStyle} ${className}`}
+        >
+          <span className="relative z-10 flex items-center gap-2">
+            {children}
+            {icon && <span className="transition-transform group-hover:translate-x-1">{icon}</span>}
+          </span>
+          <span className="absolute inset-0 bg-gold-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        </motion.div>
       </a>
     );
   }
 
-  return content;
+  return buttonContent;
 };

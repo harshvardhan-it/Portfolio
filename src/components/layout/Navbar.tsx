@@ -53,13 +53,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, onToggleTe
           href="#hero"
           className="pointer-events-auto flex items-center gap-3 px-4 py-2 rounded-full bg-[#111111]/80 backdrop-blur-xl border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-300 group"
         >
-          <div className="w-2.5 h-2.5 rounded-full bg-[#D4AF37] group-hover:scale-125 transition-transform" />
-          <span className="font-display font-semibold text-sm tracking-wide text-white">
-            {firstName}<span className="text-[#D4AF37]">.dev</span>
-          </span>
-          <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono rounded bg-white/10 text-gray-300">
-            MERN & AI
-          </span>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#D4AF37] group-hover:scale-125 transition-transform shrink-0" />
+          <div className="flex flex-col leading-none">
+            <span className="font-display font-semibold text-sm tracking-wide text-white">
+              {firstName}<span className="text-[#D4AF37]">.dev</span>
+            </span>
+            <span className="mt-1 text-[9.5px] sm:text-[10px] font-mono tracking-[0.12em] text-gray-400/80 uppercase whitespace-nowrap">
+              MERN <span className="text-[#D4AF37]">||</span> AI <span className="text-[#D4AF37]">||</span> ANALYTICS
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav Links Pill */}

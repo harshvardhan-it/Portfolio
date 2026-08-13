@@ -149,22 +149,27 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           {/* Action Links */}
           <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
             <div className="flex gap-4">
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#D4AF37] text-[#090909] text-xs font-semibold hover:bg-[#E2C266] transition-colors"
-              >
-                Launch Product Demo <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/20 text-white text-xs font-semibold hover:bg-white/10 transition-colors"
-              >
-                Source Repository <GithubIcon className="w-3.5 h-3.5" />
-              </a>
+              {project.demoUrl?.trim() && (
+  <a
+    href={project.demoUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#D4AF37] text-[#090909] text-xs font-semibold hover:bg-[#E2C266] transition-colors"
+  >
+    Launch Product Demo <ExternalLink className="w-3.5 h-3.5" />
+  </a>
+)}
+
+{project.githubUrl?.trim() && (
+  <a
+    href={project.githubUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/20 text-white text-xs font-semibold hover:bg-white/10 transition-colors"
+  >
+    Source Repository <GithubIcon className="w-3.5 h-3.5" />
+  </a>
+)}
             </div>
             <button
               onClick={onClose}

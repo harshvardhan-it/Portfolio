@@ -114,23 +114,23 @@ export const RECRUITER_FAST_PASS = {
 export const PHILOSOPHY_PILLARS = [
   {
     icon: 'Terminal',
-    title: 'Architecture before implementation',
-    description: 'The best systems are not the most impressive on paper. They are the ones that stay understandable under pressure, survive failure, and make the next change cheap.',
-  },
-  {
-    icon: 'TrendingUp',
-    title: 'Measure what matters',
-    description: 'I care about latency, cost, reliability, and clarity—not just whether the feature shipped. Engineering quality is visible in the operating numbers.',
+    title: 'Understand before you build',
+    description: 'Good implementation starts with understanding the problem, constraints, data flow, and failure points before choosing the tools.',
   },
   {
     icon: 'Cpu',
-    title: 'LLMs need boundaries',
-    description: 'The hard part of AI product engineering is not the model call. It is the orchestration, retrieval, fallback logic, and observability around it.',
+    title: 'Make AI actually useful',
+    description: 'AI should solve a real problem. I care about the engineering around the model — context, retrieval, orchestration, fallbacks, and measurable outcomes.',
   },
   {
-    icon: 'Sparkles',
-    title: 'Reliable execution beats cleverness',
-    description: 'The strongest engineering work is rarely flashy. It is disciplined, testable, and designed to let a team move faster without creating chaos.',
+    icon: 'ShieldCheck',
+    title: 'Design for failure',
+    description: 'Systems should be understandable when things go wrong. Clear boundaries, validation, observability, and graceful failure make iteration much easier.',
+  },
+  {
+    icon: 'RefreshCw',
+    title: 'Ship, measure, improve',
+    description: 'The first version is only the starting point. Real engineering comes from testing assumptions, learning from failures, and making the next version better.',
   }
 ];
 
@@ -191,7 +191,7 @@ def analyze_dataset(payload: AnalysisRequest):
     tradeoffs: 'The engineering decisions were shaped by product clarity. React was chosen because it made the interface feel responsive and coherent without overcomplicating the frontend. FastAPI was a strong fit because it made API contracts and backend workflows explicit, which mattered when the product needed to connect multiple responsibilities cleanly. PostgreSQL was selected for structured data and dependable reporting rather than a more flexible but less predictable setup. JWT was used to keep authentication simple and practical for a product that needed secure access without unnecessary complexity. Groq was chosen to make AI-assisted analysis available early in the build, and PDF export was kept straightforward so the product could move from analysis to a decision-ready artifact without friction.',
     benchmarks: [],
     githubUrl: 'https://github.com/harshvardhan-it/NeuroSync',
-    demoUrl: '#projects'
+    demoUrl: 'https://neuro-sync-phi.vercel.app/auth'
   },
   {
     id: 'pahchanai',
@@ -235,7 +235,7 @@ def analyze_dataset(payload: AnalysisRequest):
     tradeoffs: 'The main design choice was to keep the assistant reliable and explainable by using a retrieval-driven workflow instead of relying on opaque agent behavior. That tradeoff made the product more practical and easier to evolve.',
     benchmarks: [],
     githubUrl: 'https://github.com/harshvardhan-it/PahchanAI',
-    demoUrl: '#projects'
+    demoUrl: 'https://pahchan-ai.vercel.app/'
   },
   {
     id: 'calderys-data-analytics-dashboard',
@@ -281,8 +281,8 @@ def analyze_dataset(payload: AnalysisRequest):
     ],
     tradeoffs: 'I focused the product on clarity and maintainability rather than trying to overfit it with every possible visualization. That made the implementation easier to extend and more appropriate for real business use.',
     benchmarks: [],
-    githubUrl: 'https://github.com/harshvardhan-it',
-    demoUrl: '#projects'
+    githubUrl: "",
+    demoUrl: ""
   }
 ];
 

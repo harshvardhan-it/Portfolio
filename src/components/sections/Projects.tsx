@@ -49,11 +49,10 @@ export const Projects: React.FC = () => {
               onHoverEnd={() => setHoveredId(null)}
             >
               <div
-                className={`group relative rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer ${
-                  hoveredId === project.id
+                className={`group relative rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer ${hoveredId === project.id
                     ? 'border-[#D4AF37]/35 bg-[#131313]'
                     : 'border-white/8 bg-[#111111]'
-                }`}
+                  }`}
                 onClick={() => setSelectedProject(project)}
               >
                 {/* Top gold bar on hover */}
@@ -147,26 +146,31 @@ export const Projects: React.FC = () => {
                           <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
                         </button>
                         <div className="flex gap-2">
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors border border-white/8"
-                            title="Source Code"
-                          >
-                            <GithubIcon className="w-4 h-4" />
-                          </a>
-                          <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="p-2 rounded-lg bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] transition-colors border border-[#D4AF37]/25"
-                            title="Live Demo"
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
+                          {project.githubUrl?.trim() && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors border border-white/8"
+                              title="Source Code"
+                            >
+                              <GithubIcon className="w-4 h-4" />
+                            </a>
+                          )}
+
+                          {project.demoUrl?.trim() && (
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="p-2 rounded-lg bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] transition-colors border border-[#D4AF37]/25"
+                              title="Live Demo"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>
