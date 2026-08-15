@@ -83,10 +83,10 @@ export const Contact: React.FC = () => {
             09 // INITIATE RECRUITMENT & COLLABORATION
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight">
-            If the role needs <span className="text-gold-gradient">real product judgment</span>, I’m interested.
+            Let&apos;s build something <span className="text-gold-gradient">intelligent</span>.
           </h2>
           <p className="text-base text-gray-400 font-normal">
-            I’m open to full-time and high-impact engineering roles where technical depth, product sense, and execution discipline matter.
+            Open to opportunities involving AI engineering, data analytics, and full-stack development where technical depth and product judgment matter.
           </p>
         </div>
 
@@ -221,10 +221,13 @@ export const Contact: React.FC = () => {
                         aria-describedby={errors.roleType ? 'contact-role-type-error' : undefined}
                         className="w-full px-4 py-2.5 rounded-xl bg-[#111111] border border-white/10 text-sm text-white focus:outline-none focus:border-[#D4AF37]"
                       >
-                        <option value="Full-Time Software Engineer">Full-Time Software Engineer</option>
-                        <option value="AI / LLM Engineer">AI / LLM Engineer</option>
-                        <option value="Backend Developer">Backend Developer</option>
-                        <option value="Software Engineering Intern">Software Engineering Intern</option>
+                        <option value="Full-Stack Engineer">Full-Stack Engineer</option>
+                        <option value="Software Engineer">Software Engineer</option>
+                        <option value="AI/ML Engineer">AI/ML Engineer</option>
+                        <option value="Generative AI Engineer">Generative AI Engineer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Data Scientist">Data Scientist</option>
+                        <option value="Data Engineer">Data Engineer</option>
                       </select>
                       {errors.roleType && <p id="contact-role-type-error" className="text-xs font-mono text-[#F3E5AB]">{errors.roleType}</p>}
                     </div>

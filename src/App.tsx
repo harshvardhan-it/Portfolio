@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { CommandPalette } from './components/layout/CommandPalette';
@@ -18,6 +18,21 @@ import { Contact } from './components/sections/Contact';
 export function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      const isInputFocused = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable;
+
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k' && !isInputFocused) {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsCommandPaletteOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#090909] text-[#F5F5F5] font-sans antialiased selection:bg-[#D4AF37]/30 selection:text-white">

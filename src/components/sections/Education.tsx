@@ -79,7 +79,7 @@ export const Education: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-[11px] font-mono text-gray-500 uppercase tracking-widest font-semibold">
                   <Users className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  Leadership & Community
+                  ENGINEERING FOCUS
                 </div>
                 <div className="space-y-2.5">
                   {EDUCATION_TIMELINE.leadership.map((lead, idx) => (

@@ -70,7 +70,7 @@ export const executeTerminalCommand = (input: string): CommandResponse => {
     case 'resume':
       return {
         type: 'success',
-        content: 'Interactive Resume available below in section #resume or type Cmd+K.'
+        content: 'Interactive Resume available below in section #resume or type Ctrl/Cmd+K.'
       };
 
     case 'sudo hire':

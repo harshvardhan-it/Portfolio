@@ -11,7 +11,12 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, onToggleTerminal }) => {
   const [activeSection, setActiveSection] = useState('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
   const firstName = PERSONAL_INFO.name.split(' ')[0] || PERSONAL_INFO.name;
+
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad|iPod/i.test(navigator.platform));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, onToggleTe
               {firstName}<span className="text-[#D4AF37]">.dev</span>
             </span>
             <span className="mt-1 text-[9.5px] sm:text-[10px] font-mono tracking-[0.12em] text-gray-400/80 uppercase whitespace-nowrap">
-              MERN <span className="text-[#D4AF37]">||</span> AI <span className="text-[#D4AF37]">||</span> ANALYTICS
+              AI <span className="text-[#D4AF37]">||</span> DATA <span className="text-[#D4AF37]">||</span> FULL-STACK
             </span>
           </div>
         </a>
@@ -98,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, onToggleTe
             title="Open Command Palette"
           >
             <Command className="w-3.5 h-3.5 text-[#D4AF37]" />
-            <span className="font-mono text-[11px] text-gray-400">Cmd K</span>
+            <span className="font-mono text-[11px] text-gray-400">{isMac ? '⌘ K' : 'Ctrl K'}</span>
           </button>
 
           {/* Terminal Toggle */}

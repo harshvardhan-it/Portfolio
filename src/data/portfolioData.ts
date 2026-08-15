@@ -17,7 +17,7 @@ export interface Project {
   id: string;
   title: string;
   tagline: string;
-  category: 'AI / LLM Infrastructure' | 'Distributed Systems' | 'FinTech & Analytics' | 'Web Platform';
+  category: 'AI Engineering' | 'Computer Vision' | 'FinTech & Analytics' | 'Full-Stack Product';
   featured: boolean;
   image: string;
   overview: string;
@@ -81,8 +81,8 @@ export interface Testimonial {
 
 export const PERSONAL_INFO = {
   name: 'Harshvardhan Dubey',
-  title: 'Software Engineering Student | Full Stack Developer | AI Product Builder',
-  shortBio: 'Final-year B.Tech Information Technology student with internship experience in data analytics, business intelligence, and practical software product engineering. Skilled in Python, SQL, Power BI, FastAPI, and applied AI workflows.',
+  title: 'AI + Data + Full-Stack Engineer',
+  shortBio: 'B.Tech Information Technology student with internship experience in data analytics and business intelligence, focused on building intelligent products with Python, SQL, Power BI, FastAPI, and applied AI workflows.',
   location: 'B.Tech Information Technology, SATI (2023-2027)',
   email: 'harshvardhan.dubey.it@gmail.com',
   github: 'https://github.com/harshvardhan-it',
@@ -138,20 +138,20 @@ export const PROJECTS: Project[] = [
   {
     id: 'neurosync',
     title: 'NeuroSync',
-    tagline: 'An AI-powered executive decision intelligence platform designed to turn messy operational data into clear, decision-ready insight.',
-    category: 'AI / LLM Infrastructure',
+    tagline: 'Executive Decision Intelligence Platform',
+    category: 'AI Engineering',
     featured: true,
     image: '/assets/project_ai.png',
-    overview: 'NeuroSync exists because executives do not need more dashboards; they need a clearer path from raw operational data to decisions they can actually act on. The idea came from the friction of existing workflows, where important signals were scattered across files, manual reports, and disconnected tools, making it difficult to move from observation to decision without losing context. I built it as a focused product experience that could help a user upload data, understand what mattered, and leave with a report they could use.',
+    overview: 'NeuroSync transforms business datasets into executive intelligence through KPI analysis, anomaly detection, forecasting, risk assessment, root-cause analysis, scenario simulation, and AI-assisted recommendations. It is designed to move from raw operational data to a decision-ready action plan without treating an LLM as the analytics engine.',
     problem: 'The real business challenge was not just data volume. It was decision friction. Teams were collecting useful information, but the effort required to interpret it, summarize it, and turn it into a practical recommendation was too high. That gap creates delays, weakens confidence in decisions, and makes the value of the data far harder to realize.',
-    solution: 'NeuroSync is a product that helps users move from a dataset to insight in a structured way. A user uploads data, the backend prepares it for analysis, AI-assisted workflows generate summaries and recommendations, and the system produces an executive-ready report with analytics, forecasting, risk assessment, and decision support. I chose React for a polished product experience, FastAPI for a clear backend API layer, PostgreSQL for reliable structured storage, JWT for secure access, Groq for practical AI-assisted analysis, and PDF generation so the output could be shared in a format decision-makers already understand. The product was designed to feel useful rather than decorative, which is why the workflow stays simple and explainable.',
+    solution: 'A user uploads a business dataset; FastAPI coordinates validation and deterministic/statistical analysis to create structured intelligence. The Groq layer then turns that grounded intelligence into an executive summary, recommendations, and an action plan. React, PostgreSQL, JWT, and PDF reporting complete a clear, secure path from input to a shareable decision artifact.',
     architectureNodes: [
       { id: '1', name: 'Dataset Input', type: 'client', latency: '3ms', description: 'React-based experience for upload, review, and workflow navigation' },
       { id: '2', name: 'FastAPI Backend', type: 'gateway', latency: '12ms', description: 'API layer for authentication, data handling, and orchestration' },
-      { id: '3', name: 'Business Logic', type: 'worker', latency: '24ms', description: 'Processing layer for validation, transformation, and report preparation' },
-      { id: '4', name: 'AI Analysis Layer', type: 'ai', latency: '40ms', description: 'Summaries, forecasting, anomaly detection, and recommendation generation' },
-      { id: '5', name: 'PostgreSQL Database', type: 'database', latency: '18ms', description: 'Structured persistence for datasets, analysis context, and report state' },
-      { id: '6', name: 'Executive Reports', type: 'gateway', latency: '8ms', description: 'PDF-ready outputs for decision support and distribution' },
+      { id: '3', name: 'Analytics Engines', type: 'worker', latency: '24ms', description: 'Deterministic and statistical workflows for KPIs, anomalies, forecasts, risks, and root causes' },
+      { id: '4', name: 'Structured Intelligence', type: 'database', latency: '18ms', description: 'PostgreSQL-backed analysis context, report state, and decision inputs' },
+      { id: '5', name: 'Groq Reasoning Layer', type: 'ai', latency: '40ms', description: 'Grounded executive summaries, recommendations, and action-plan reasoning' },
+      { id: '6', name: 'Executive Output', type: 'gateway', latency: '8ms', description: 'Decision-ready dashboard and PDF report distribution' },
     ],
     codeSnippets: [
       {
@@ -173,7 +173,7 @@ def analyze_dataset(payload: AnalysisRequest):
     }`
       }
     ],
-    techStack: ['React', 'FastAPI', 'PostgreSQL', 'JWT', 'Groq', 'Python', 'PDF Reporting', 'Tailwind CSS'],
+    techStack: ['React', 'FastAPI', 'Python', 'Pandas', 'PostgreSQL', 'JWT', 'Groq', 'PDF Reporting'],
     impactMetrics: [
       'Built the full product experience end to end, including frontend flows, backend services, database design, authentication, API structure, AI integration, and report generation.',
       'Focused the work on clarity and usability so the product would feel like a decision-support tool rather than a collection of disconnected features.',
@@ -184,7 +184,8 @@ def analyze_dataset(payload: AnalysisRequest):
       'Backend APIs for analysis workflows and report generation',
       'PostgreSQL-backed data model for structured storage and retrieval',
       'JWT-based authentication and session protection',
-      'AI integration for executive summaries, forecasting, risk detection, and recommendations',
+      'Deterministic analytics for KPIs, anomalies, forecasts, risks, correlations, and root-cause signals',
+      'Groq reasoning layer that converts structured intelligence into executive summaries and recommendations',
       'PDF reporting for shareable executive output',
       'Modular architecture for maintainable product growth'
     ],
@@ -196,43 +197,45 @@ def analyze_dataset(payload: AnalysisRequest):
   {
     id: 'pahchanai',
     title: 'PahchanAI',
-    tagline: 'Context-aware AI assistant for structured retrieval and grounded response generation.',
-    category: 'Web Platform',
+    tagline: 'Face Recognition & Identity Matching System',
+    category: 'Computer Vision',
     featured: true,
     image: '/assets/project_backend.png',
-    overview: 'PahchanAI is a focused product experience for helping users retrieve context from structured information and generate grounded responses. I built the experience with a polished frontend, a backend service layer, and a database-backed knowledge flow.',
-    problem: 'Users often need accurate answers from information that is spread across documents, tables, and internal knowledge sources. Generic AI interactions are too shallow when the task depends on reliable retrieval and structure.',
-    solution: 'PahchanAI combines a clean React interface with a FastAPI backend and structured storage so the assistant can answer questions with context rather than guesswork. The system emphasizes secure access, retrieval quality, and a straightforward user experience.',
+    overview: 'PahchanAI is a computer vision system for face recognition and identity matching. It combines OpenCV-based face detection, FaceNet embeddings, FAISS vector similarity search, and a React/Node.js web interface to support identity matching from image or CCTV-style inputs.',
+    problem: 'Manual identification from visual footage is slow and unreliable when a system needs to compare faces across a large reference set. The problem calls for a pipeline that can detect faces, represent them consistently as embeddings, and retrieve the closest matches efficiently.',
+    solution: 'PahchanAI processes an image through OpenCV-based face detection, creates FaceNet embeddings, searches them with FAISS for nearest-neighbor matching, and presents identity matches through a full-stack interface. The design keeps the computer-vision pipeline transparent — detection → embedding → similarity search → match review — rather than obscuring it behind a generic "AI" label.',
     architectureNodes: [
-      { id: '1', name: 'User Interface', type: 'client', latency: '2ms', description: 'React experience for prompts, context, and response review' },
-      { id: '2', name: 'API Layer', type: 'gateway', latency: '10ms', description: 'FastAPI routes for auth, query handling, and orchestration' },
-      { id: '3', name: 'Retrieval Logic', type: 'worker', latency: '20ms', description: 'Search and ranking layer for structured context retrieval' },
-      { id: '4', name: 'AI Response Layer', type: 'ai', latency: '35ms', description: 'Prompt orchestration for grounded answer generation' },
-      { id: '5', name: 'Knowledge Storage', type: 'database', latency: '15ms', description: 'PostgreSQL-backed storage for indexed knowledge and state' },
+      { id: '1', name: 'Image / CCTV Input', type: 'client', latency: '2ms', description: 'Web interface for image submission and match review' },
+      { id: '2', name: 'OpenCV Detection', type: 'gateway', latency: '10ms', description: 'Image preprocessing and face-detection handoff' },
+      { id: '3', name: 'FaceNet Embeddings', type: 'worker', latency: '20ms', description: 'Converts detected faces into comparable vector embeddings' },
+      { id: '4', name: 'FAISS Similarity Search', type: 'ai', latency: '35ms', description: 'Finds the nearest candidates across the indexed face vectors' },
+      { id: '5', name: 'Identity Matches', type: 'database', latency: '15ms', description: 'Reference records and match results for recognition review' },
     ],
     codeSnippets: [
       {
-        filename: 'retrieval.py',
+        filename: 'recognition_pipeline.py',
         language: 'python',
-        description: 'Simple retrieval flow for grounded answer generation',
-        code: `def retrieve_context(query: str):
-    candidates = search_documents(query)
-    ranked = rank_candidates(candidates)
-    return ranked[:5]`
+        description: 'Face embedding and similarity lookup flow for identity matching',
+        code: `def identify_face(image):
+    face = detect_face_with_opencv(image)
+    embedding = facenet.encode(face)
+    distances, matches = faiss_index.search(embedding, k=5)
+    return rank_identity_matches(matches, distances)`
       }
     ],
-    techStack: ['React', 'FastAPI', 'PostgreSQL', 'Python', 'JWT Authentication', 'LLM API'],
+    techStack: ['React', 'Node.js', 'Express.js', 'MongoDB', 'OpenCV', 'FaceNet', 'FAISS', 'Python'],
     impactMetrics: [
-      'Built a retrieval-first assistant experience that focuses on grounded answers rather than generic AI output.'
+      'Designed a computer-vision pipeline that connects face detection, embeddings, and vector similarity search to a usable product interface.',
+      'Made the recognition stages inspectable so the system communicates how a match is produced rather than presenting an opaque result.'
     ],
     keyFeatures: [
-      'Context-aware Q&A',
-      'Secure authentication',
-      'Knowledge retrieval',
-      'Response generation',
-      'Structured data support'
+      'Image and CCTV-style input handling',
+      'OpenCV face detection and preprocessing',
+      'FaceNet embedding generation',
+      'FAISS similarity search',
+      'Identity match review in a MERN interface'
     ],
-    tradeoffs: 'The main design choice was to keep the assistant reliable and explainable by using a retrieval-driven workflow instead of relying on opaque agent behavior. That tradeoff made the product more practical and easier to evolve.',
+    tradeoffs: 'The core tradeoff was to prioritize a clear recognition pipeline over a vague “AI-powered” experience. Separating detection, embeddings, similarity search, and match review makes the system easier to reason about, evaluate, and evolve.',
     benchmarks: [],
     githubUrl: 'https://github.com/harshvardhan-it/PahchanAI',
     demoUrl: 'https://pahchan-ai.vercel.app/'
@@ -240,13 +243,13 @@ def analyze_dataset(payload: AnalysisRequest):
   {
     id: 'calderys-data-analytics-dashboard',
     title: 'Calderys Data Analytics Dashboard',
-    tagline: 'Operational analytics dashboard for turning raw business data into focused reporting and decision support.',
+    tagline: 'Operational analytics & reporting (Professional Experience — Calderys Internship)',
     category: 'FinTech & Analytics',
     featured: true,
     image: '/assets/project_fintech.png',
-    overview: 'This dashboard project focused on making business data easier to monitor and interpret. I built the experience around data modeling, API design, dashboard UI, and reliable frontend-backend communication so that stakeholders could review operational signals without manual reporting work.',
-    problem: 'Teams need a practical way to review trends, distributions, and operational metrics without jumping between exports and disconnected reports. A strong dashboard needs to balance clarity, speed, and data integrity.',
-    solution: 'The dashboard uses a React frontend, FastAPI services, and PostgreSQL storage to provide structured analytics, clear summaries, and a dependable path from raw data to presentation. The work emphasized clean interfaces, thoughtful data modeling, and scalable API design.',
+    overview: 'During my internship at Calderys, I built operational analytics dashboards and reporting workflows using Power BI, Excel, Python, and SQL. The work focused on cleaning, validating, and presenting business data for 200+ employee assets and 1,000+ inventory records so stakeholders could make decisions without manual reporting overhead.',
+    problem: 'Teams needed a practical way to review operational trends and metrics without jumping between fragmented exports and disconnected reports. The challenge was balancing clarity, speed, and data integrity in a manufacturing context.',
+    solution: 'I designed interactive Power BI dashboards, built data cleaning workflows in Excel/Python, and created structured reporting that reduced manual reporting time and data inconsistencies. The work emphasized clean data modeling, reliable ETL, and stakeholder-ready presentation.',
     architectureNodes: [
       { id: '1', name: 'Analytics UI', type: 'client', latency: '3ms', description: 'React dashboard for charts, filters, and reporting views' },
       { id: '2', name: 'API Services', type: 'gateway', latency: '10ms', description: 'FastAPI routes for query execution and aggregation' },
@@ -410,16 +413,16 @@ export const EDUCATION_TIMELINE = {
   relevantCoursework: [
     'Data Structures & Algorithms',
     'Database Management Systems',
+    'Artificial Intelligence',
+    'Data Analytics',
     'Operating Systems',
     'Computer Networks',
-    'Software Engineering',
-    'Artificial Intelligence',
     'Web Development'
-  ],
+],
   leadership: [
-    'Building practical software products with React, FastAPI, and PostgreSQL',
-    'Exploring AI-assisted workflows, analytics, and decision-support systems',
-    'Strengthening backend engineering, API design, and product thinking'
+    'Building production-oriented applications with React, FastAPI, and PostgreSQL',
+    'Developing AI-powered systems for data intelligence, analytics, and decision support',
+    'Engineering scalable backends, APIs, and data-driven product solutions'
   ]
 };
 

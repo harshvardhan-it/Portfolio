@@ -86,7 +86,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           )}
 
           {/* AI Benchmarks Visualizer if AI project */}
-          {project.category === 'AI / LLM Infrastructure' && project.benchmarks && (
+          {project.category === 'AI Engineering' && project.benchmarks && (
             <AIBenchmarkVisualizer project={project} />
           )}
 

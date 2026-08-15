@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Award, Briefcase, Layers, Trophy } from 'lucide-react';
+import { ArrowUpRight, Award, Briefcase, Layers } from 'lucide-react';
 import { EXPERIENCE, PROJECTS } from '../../data/portfolioData';
 
 const internship = EXPERIENCE.find((item) => item.type === 'Internship');
@@ -13,29 +13,6 @@ const projectDescriptions: Record<string, string> = {
   pahchanai: 'AI-powered facial recognition & identity system',
   'calderys-data-analytics-dashboard': 'Power BI-based operational intelligence',
 };
-
-const milestones = [
-  {
-    year: '2025',
-    label: 'INTERNSHIP',
-    detail: internship?.company ?? 'Calderys India Refractories Ltd.',
-  },
-  {
-    year: '2026',
-    label: 'HACKOVERFLOW',
-    detail: 'HackOverFlow',
-  },
-  {
-    year: '2026',
-    label: 'NEUROSYNC AI',
-    detail: projectDescriptions.neurosync,
-  },
-  {
-    year: '2026',
-    label: 'PAHCHANAI',
-    detail: projectDescriptions.pahchanai,
-  },
-];
 
 const credentials = [
   {
@@ -207,39 +184,6 @@ export const Achievements: React.FC = () => {
             </div>
           </motion.article>
         </div>
-
-        <motion.article
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="group relative mt-4 rounded-2xl border border-white/8 bg-[#111111] transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37]/45 overflow-hidden"
-        >
-          <div className="p-6 sm:p-7">
-            <div className="flex items-center gap-3 mb-7">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center border bg-white/5 border-white/10 group-hover:bg-[#D4AF37]/10 group-hover:border-[#D4AF37]/30 transition-colors">
-                <Trophy className="w-5 h-5 text-[#D4AF37]" aria-hidden="true" />
-              </div>
-              <h3 className="text-sm font-mono font-semibold tracking-[0.12em] text-[#F3E5AB]">MILESTONES</h3>
-            </div>
-
-            <div className="relative">
-              <div className="hidden lg:block absolute left-3 right-3 top-2.5 h-px bg-white/10" aria-hidden="true" />
-              <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-x-6 sm:gap-y-7" aria-label="Experience and project milestones">
-                {milestones.map((milestone) => (
-                  <li key={milestone.label} className="relative">
-                    <span className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#D4AF37] lg:left-3 lg:-translate-x-1/2" aria-hidden="true" />
-                    <div className="pl-5 lg:pl-0 lg:pt-6">
-                      <div className="text-xs font-mono text-gray-500">{milestone.year}</div>
-                      <div className="mt-1 text-xs font-mono font-semibold text-[#F3E5AB]">{milestone.label}</div>
-                      <p className="mt-1 text-sm text-gray-400">{milestone.detail}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </motion.article>
 
         <motion.article
           initial={{ opacity: 0, y: 20 }}

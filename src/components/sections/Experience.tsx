@@ -39,7 +39,7 @@ export const Experience: React.FC = () => {
             <span className="text-gold-gradient">real-world stakes</span>.
           </h2>
           <p className="text-base text-gray-400 leading-relaxed">
-            Production codebases, open-source communities, and teams that demanded measurable results.
+            Internship experience applying analytics, reporting, and data quality work to operational business decisions.
           </p>
         </motion.div>
 

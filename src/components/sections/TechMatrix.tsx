@@ -1,16 +1,45 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TECH_CATEGORIES, PROJECTS } from '../../data/portfolioData';
+import { TECH_CATEGORIES, PROJECTS, type TechCategory } from '../../data/portfolioData';
 import { SpotlightCard } from '../ui/SpotlightCard';
 import { Layers } from 'lucide-react';
+
+const skillLookup = Object.fromEntries(
+  TECH_CATEGORIES.flatMap((category) => category.skills.map((skill) => [skill.id, skill])),
+);
+
+const skills = (...ids: string[]) => ids.map((id) => skillLookup[id]).filter(Boolean);
+
+const capabilityCategories: TechCategory[] = [
+  {
+    title: 'AI / Machine Learning',
+    description: 'Building practical AI workflows with computer vision, vector similarity search, and grounded decision support.',
+    skills: skills('ai-integration', 'computer-vision', 'faiss', 'prompting', 'llm-ops'),
+  },
+  {
+    title: 'Data & Analytics',
+    description: 'Turning operational data into clean reporting, useful analysis, and decision-ready signals.',
+    skills: skills('python-lang', 'sql', 'datamodels', 'excel', 'powerbi', 'reporting'),
+  },
+  {
+    title: 'Full Stack',
+    description: 'Designing product interfaces, APIs, authentication, and data layers as one coherent system.',
+    skills: skills('react', 'tailwind', 'typescript', 'fastapi', 'apis', 'auth', 'postgres'),
+  },
+  {
+    title: 'Tools / Infrastructure',
+    description: 'Using practical tooling to build, iterate on, and maintain software products clearly.',
+    skills: skills('git', 'vscode'),
+  },
+];
 
 export const TechMatrix: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSkillId, setSelectedSkillId] = useState<string | null>(null);
 
-  const selectedSkill = TECH_CATEGORIES.flatMap(c => c.skills).find(s => s.id === selectedSkillId);
+  const selectedSkill = capabilityCategories.flatMap(c => c.skills).find(s => s.id === selectedSkillId);
   const relatedProjects = selectedSkill ? PROJECTS.filter(p => selectedSkill.usedInProjectIds.includes(p.id)) : [];
-  const summaryItems = TECH_CATEGORIES.slice(0, 4).map((category) => ({
+  const summaryItems = capabilityCategories.map((category) => ({
     label: category.title,
     value: category.skills.slice(0, 2).map((skill) => skill.name).join(' / '),
   }));
@@ -24,16 +53,16 @@ export const TechMatrix: React.FC = () => {
             03 // TECHNICAL EXPERTISE ARCHITECTURE
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight">
-            Categorized Technical Stack & <span className="text-gold-gradient">System Mastery</span>.
+            AI, data, and full-stack <span className="text-gold-gradient">capability map</span>.
           </h2>
           <p className="text-base text-gray-400 font-normal">
-            No vanity progress bars. Click any skill to reveal its exact production usage across real project codebases.
+            Skills are grouped around the work they enable. Select one to see where it connects to a real project.
           </p>
         </div>
 
         {/* Category Tabs */}
         <div className="flex flex-wrap gap-2 mb-10 pb-4 border-b border-white/10">
-          {TECH_CATEGORIES.map((cat, idx) => (
+          {capabilityCategories.map((cat, idx) => (
             <button
               key={idx}
               onClick={() => {
@@ -61,15 +90,15 @@ export const TechMatrix: React.FC = () => {
         >
           <div className="p-4 rounded-xl bg-[#111111] border border-white/10 flex items-center justify-between">
             <p className="text-sm text-gray-300 font-mono">
-              {TECH_CATEGORIES[activeTab].description}
+              {capabilityCategories[activeTab].description}
             </p>
             <span className="text-xs font-mono text-[#D4AF37]">
-              {TECH_CATEGORIES[activeTab].skills.length} core technologies
+              {capabilityCategories[activeTab].skills.length} core capabilities
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TECH_CATEGORIES[activeTab].skills.map((skill) => {
+            {capabilityCategories[activeTab].skills.map((skill) => {
               const isSelected = selectedSkillId === skill.id;
               return (
                 <SpotlightCard
