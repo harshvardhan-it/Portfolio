@@ -54,8 +54,8 @@ const credentials = [
     year: '2026',
     label: 'GSA',
     status: 'SELECTED · 2026',
-    title: 'Google Student Ambassador',
-    description: 'Selected as a Google Student Ambassador (GSA), representing Google on campus and helping drive student engagement around technology, learning, and community.',
+    title: 'Google Gemini Student Ambassador',
+    description: 'Selected as a Google Gemini Student Ambassador (GSA) for 2026, helping bring Gemini and practical AI experiences to students through campus engagement, content, and community-led activities.',
     featured: true,
   },
   {
