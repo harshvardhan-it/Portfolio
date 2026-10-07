@@ -291,6 +291,20 @@ def analyze_dataset(payload: AnalysisRequest):
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
+    period: '2026',
+    role: 'Google Gemini Student Ambassador',
+    company: 'Google',
+    type: 'Leadership',
+    location: 'India',
+    description: 'Selected as a Google Gemini Student Ambassador for 2026, representing Gemini through student-focused content, community engagement, and practical AI experiences.',
+    impactHighlights: [
+      'Create student-focused content that demonstrates practical ways Gemini can support ideation, learning, and creative workflows.',
+      'Participate in Gemini community activities and campaigns designed to help students discover useful generative AI workflows.',
+      'Represent Gemini in student communities while building hands-on experience in AI advocacy, communication, and community leadership.'
+    ],
+    technologies: ['Google Gemini', 'Generative AI', 'Content Creation', 'Community Engagement']
+  },
+  {
     period: 'June 2025 – July 2025',
     role: 'Data Analyst Intern',
     company: 'Calderys India Refractories Ltd.',
