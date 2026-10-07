@@ -238,19 +238,6 @@ export const Achievements: React.FC = () => {
                   )}
                 </article>
               ))}
-
-              <article className="rounded-xl border border-white/8 bg-white/[0.02] p-5 sm:col-span-2 lg:col-span-4 transition-colors group-hover:border-[#D4AF37]/25">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div>
-                    <div className="text-[11px] font-mono font-semibold tracking-wide text-[#F3E5AB]">{credentials[4].label}</div>
-                    <h4 className="mt-2 text-base font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{credentials[4].title}</h4>
-                  </div>
-                  <div className="sm:text-right">
-                    <div className="text-xs font-mono text-gray-500">{credentials[4].year}</div>
-                    <div className="mt-1 text-xs font-mono font-semibold text-[#D4AF37]">{credentials[4].status}</div>
-                  </div>
-                </div>
-              </article>
             </div>
           </div>
         </motion.article>
