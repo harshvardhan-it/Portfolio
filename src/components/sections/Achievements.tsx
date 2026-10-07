@@ -52,6 +52,14 @@ const credentials = [
   },
   {
     year: '2026',
+    label: 'GSA',
+    status: 'SELECTED · 2026',
+    title: 'Google Student Ambassador',
+    description: 'Selected as a Google Student Ambassador (GSA), representing Google on campus and helping drive student engagement around technology, learning, and community.',
+    featured: true,
+  },
+  {
+    year: '2026',
     label: 'HACKOVERFLOW 4.0',
     status: 'HACKATHON · PARTICIPANT',
     title: 'HackOverFlow',
@@ -200,8 +208,8 @@ export const Achievements: React.FC = () => {
               <h3 className="text-sm font-mono font-semibold tracking-[0.12em] text-[#F3E5AB]">CREDENTIALS &amp; ACHIEVEMENTS</h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {credentials.slice(0, 3).map((credential) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {credentials.slice(0, 4).map((credential) => (
                 <article
                   key={credential.title}
                   className={`flex min-h-56 flex-col rounded-xl border p-5 transition-colors ${credential.featured
@@ -231,15 +239,15 @@ export const Achievements: React.FC = () => {
                 </article>
               ))}
 
-              <article className="rounded-xl border border-white/8 bg-white/[0.02] p-5 sm:col-span-2 lg:col-span-3 transition-colors group-hover:border-[#D4AF37]/25">
+              <article className="rounded-xl border border-white/8 bg-white/[0.02] p-5 sm:col-span-2 lg:col-span-4 transition-colors group-hover:border-[#D4AF37]/25">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div>
-                    <div className="text-[11px] font-mono font-semibold tracking-wide text-[#F3E5AB]">{credentials[3].label}</div>
-                    <h4 className="mt-2 text-base font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{credentials[3].title}</h4>
+                    <div className="text-[11px] font-mono font-semibold tracking-wide text-[#F3E5AB]">{credentials[4].label}</div>
+                    <h4 className="mt-2 text-base font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{credentials[4].title}</h4>
                   </div>
                   <div className="sm:text-right">
-                    <div className="text-xs font-mono text-gray-500">{credentials[3].year}</div>
-                    <div className="mt-1 text-xs font-mono font-semibold text-[#D4AF37]">{credentials[3].status}</div>
+                    <div className="text-xs font-mono text-gray-500">{credentials[4].year}</div>
+                    <div className="mt-1 text-xs font-mono font-semibold text-[#D4AF37]">{credentials[4].status}</div>
                   </div>
                 </div>
               </article>
