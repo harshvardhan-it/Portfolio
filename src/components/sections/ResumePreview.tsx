@@ -121,19 +121,19 @@ export const ResumePreview: React.FC = () => {
                   <div className="space-y-2">
                     <h5 className="text-xs font-mono text-gray-400">CORE COMPETENCIES</h5>
                     <ul className="space-y-1 text-xs text-gray-300 font-mono">
-                      <li>• Distributed Microservices & Event Streaming</li>
-                      <li>• Applied LLM RAG & Vector Indexing</li>
-                      <li>• Full-Stack React / Next.js / TypeScript</li>
-                      <li>• High-Concurrency Node.js & Database Tuning</li>
+                      <li>• Python, SQL & Applied Data Analytics</li>
+                      <li>• GenAI API Integration & Prompt Engineering</li>
+                      <li>• React + FastAPI Full-Stack Development</li>
+                      <li>• PostgreSQL, Power BI & Azure Fundamentals (Learning)</li>
                     </ul>
                   </div>
 
                   <div className="space-y-2">
                     <h5 className="text-xs font-mono text-gray-400">TARGET RECRUITER VERIFICATION</h5>
                     <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-gray-300 font-mono space-y-1">
-                      <span className="text-[#D4AF37]">STATUS:</span> Available for Full-Time & Internship Roles.
+                      <span className="text-[#D4AF37]">STATUS:</span> {PERSONAL_INFO.status}
                       <br />
-                      <span className="text-[#D4AF37]">LOCATION:</span> Flexible / Remote / Open to relocation.
+                      <span className="text-[#D4AF37]">LOCATION:</span> Bhopal, Madhya Pradesh, India.
                     </div>
                   </div>
                 </div>

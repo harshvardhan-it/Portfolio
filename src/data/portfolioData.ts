@@ -81,14 +81,14 @@ export interface Testimonial {
 
 export const PERSONAL_INFO = {
   name: 'Harshvardhan Dubey',
-  title: 'AI + Data + Full-Stack Engineer',
-  shortBio: 'B.Tech Information Technology student with internship experience in data analytics and business intelligence, focused on building intelligent products with Python, SQL, Power BI, FastAPI, and applied AI workflows.',
+  title: 'AI/ML & Generative AI Developer | Azure (Foundational Learning)',
+  shortBio: 'Final-year Information Technology student with hands-on experience in data analytics, business intelligence, and full-stack application development. Skilled in Python, SQL, FastAPI, React, and PostgreSQL, with experience building AI-powered analytics platforms and data-driven applications. Interested in developing intelligent software solutions using AI, Generative AI, and cloud technologies.',
   location: 'B.Tech Information Technology, SATI (2023-2027)',
   email: 'harshvardhan.dubey.it@gmail.com',
   github: 'https://github.com/harshvardhan-it',
   linkedin: 'https://www.linkedin.com/in/harshvardhan-dubey-31051a294',
   resumeUrl: '/Harshvardhan_Resume.pdf',
-  status: 'Seeking Software Engineering Internships and New Graduate Software Engineer roles',
+  status: 'Seeking internships and early-career roles in AI/ML, Generative AI, and AI software engineering; building Microsoft Azure fundamentals.',
   metrics: [
     { label: 'Education', value: 'B.Tech IT' },
     { label: 'Institute', value: 'SATI' },
@@ -99,7 +99,7 @@ export const PERSONAL_INFO = {
 
 export const RECRUITER_FAST_PASS = {
   headline: 'Recruiter Summary — Harshvardhan Dubey',
-  roles: ['Software Engineering Student', 'Full Stack Developer', 'AI Product Builder', 'Data-Driven Software Engineer'],
+  roles: ['AI/ML Engineer', 'Generative AI Engineer', 'AI Software Engineer', 'Azure AI Engineer (Foundational Learning)'],
   topCapabilities: [
     'Builds React-based product experiences with a clear focus on usability and engineering structure',
     'Works with FastAPI, PostgreSQL, Python, and reporting tools to turn data into practical software features',
@@ -107,7 +107,7 @@ export const RECRUITER_FAST_PASS = {
     'Keeps technical claims grounded in portfolio projects, internship work, and interview-defensible implementation details'
   ],
   education: 'B.Tech Information Technology, Samrat Ashok Technological Institute (SATI), 2023-2027',
-  locationFlexibility: 'Seeking software engineering internships and new graduate roles',
+  locationFlexibility: 'Seeking internships and early-career opportunities in AI/ML, Generative AI, and AI software engineering.',
   workAuthorization: 'Open to student and early-career software engineering opportunities'
 };
 
@@ -192,7 +192,7 @@ def analyze_dataset(payload: AnalysisRequest):
     tradeoffs: 'The engineering decisions were shaped by product clarity. React was chosen because it made the interface feel responsive and coherent without overcomplicating the frontend. FastAPI was a strong fit because it made API contracts and backend workflows explicit, which mattered when the product needed to connect multiple responsibilities cleanly. PostgreSQL was selected for structured data and dependable reporting rather than a more flexible but less predictable setup. JWT was used to keep authentication simple and practical for a product that needed secure access without unnecessary complexity. Groq was chosen to make AI-assisted analysis available early in the build, and PDF export was kept straightforward so the product could move from analysis to a decision-ready artifact without friction.',
     benchmarks: [],
     githubUrl: 'https://github.com/harshvardhan-it/NeuroSync',
-    demoUrl: 'https://neuro-sync-phi.vercel.app/auth'
+    demoUrl: 'https://neurosync-ui16.onrender.com'
   },
   {
     id: 'pahchanai',
@@ -201,11 +201,11 @@ def analyze_dataset(payload: AnalysisRequest):
     category: 'Computer Vision',
     featured: true,
     image: '/assets/project_backend.png',
-    overview: 'PahchanAI is a computer vision system for face recognition and identity matching. It combines OpenCV-based face detection, FaceNet embeddings, FAISS vector similarity search, and a React/Node.js web interface to support identity matching from image or CCTV-style inputs.',
-    problem: 'Manual identification from visual footage is slow and unreliable when a system needs to compare faces across a large reference set. The problem calls for a pipeline that can detect faces, represent them consistently as embeddings, and retrieve the closest matches efficiently.',
-    solution: 'PahchanAI processes an image through OpenCV-based face detection, creates FaceNet embeddings, searches them with FAISS for nearest-neighbor matching, and presents identity matches through a full-stack interface. The design keeps the computer-vision pipeline transparent — detection → embedding → similarity search → match review — rather than obscuring it behind a generic "AI" label.',
+    overview: 'PahchanAI is a computer vision system for face recognition and identity matching. It combines OpenCV-based face detection, FaceNet embeddings, FAISS vector similarity search, and a web interface to manage missing-person records and review potential facial matches.',
+    problem: 'Finding a potential identity match across stored missing-person records requires a repeatable way to detect faces, represent them as embeddings, and retrieve visually similar candidates for human review.',
+    solution: 'PahchanAI uses OpenCV for image processing, FaceNet for facial feature embeddings, and FAISS for similarity search, then presents potential matches through a web platform for review. The pipeline remains explicit: image processing → embedding → similarity search → match review.',
     architectureNodes: [
-      { id: '1', name: 'Image / CCTV Input', type: 'client', latency: '2ms', description: 'Web interface for image submission and match review' },
+      { id: '1', name: 'Image Input', type: 'client', latency: '2ms', description: 'Web interface for image submission and match review' },
       { id: '2', name: 'OpenCV Detection', type: 'gateway', latency: '10ms', description: 'Image preprocessing and face-detection handoff' },
       { id: '3', name: 'FaceNet Embeddings', type: 'worker', latency: '20ms', description: 'Converts detected faces into comparable vector embeddings' },
       { id: '4', name: 'FAISS Similarity Search', type: 'ai', latency: '35ms', description: 'Finds the nearest candidates across the indexed face vectors' },
@@ -229,7 +229,7 @@ def analyze_dataset(payload: AnalysisRequest):
       'Made the recognition stages inspectable so the system communicates how a match is produced rather than presenting an opaque result.'
     ],
     keyFeatures: [
-      'Image and CCTV-style input handling',
+      'Image upload and match review',
       'OpenCV face detection and preprocessing',
       'FaceNet embedding generation',
       'FAISS similarity search',
@@ -237,72 +237,59 @@ def analyze_dataset(payload: AnalysisRequest):
     ],
     tradeoffs: 'The core tradeoff was to prioritize a clear recognition pipeline over a vague “AI-powered” experience. Separating detection, embeddings, similarity search, and match review makes the system easier to reason about, evaluate, and evolve.',
     benchmarks: [],
-    githubUrl: 'https://github.com/harshvardhan-it/PahchanAI',
+    githubUrl: 'https://github.com/Harshwwe/PahchanAI',
     demoUrl: 'https://pahchan-ai.vercel.app/'
   },
   {
-    id: 'calderys-data-analytics-dashboard',
-    title: 'Calderys Data Analytics Dashboard',
-    tagline: 'Operational analytics & reporting (Professional Experience — Calderys Internship)',
-    category: 'FinTech & Analytics',
+    id: 'sssmp-portal',
+    title: 'SSSMP Portal',
+    tagline: 'Bilingual Digital Membership Registration & Management Platform',
+    category: 'Full-Stack Product',
     featured: true,
-    image: '/assets/project_fintech.png',
-    overview: 'During my internship at Calderys, I built operational analytics dashboards and reporting workflows using Power BI, Excel, Python, and SQL. The work focused on cleaning, validating, and presenting business data for 200+ employee assets and 1,000+ inventory records so stakeholders could make decisions without manual reporting overhead.',
-    problem: 'Teams needed a practical way to review operational trends and metrics without jumping between fragmented exports and disconnected reports. The challenge was balancing clarity, speed, and data integrity in a manufacturing context.',
-    solution: 'I designed interactive Power BI dashboards, built data cleaning workflows in Excel/Python, and created structured reporting that reduced manual reporting time and data inconsistencies. The work emphasized clean data modeling, reliable ETL, and stakeholder-ready presentation.',
+    image: '/assets/project_backend.png',
+    overview: 'A bilingual Hindi-English membership portal for a teachers’ organization in Madhya Pradesh. The product experience brings together public information, multi-step member registration, printable digital membership cards, and administrative views for the State → District → Block hierarchy.',
+    problem: 'Membership workflows need to be accessible to members while giving administrators a structured way to review and manage records across multiple organizational levels.',
+    solution: 'Built a responsive React and TypeScript interface with Hindi and English language support, guided registration, member-facing card views, and administrative dashboards for hierarchical member management.',
     architectureNodes: [
-      { id: '1', name: 'Analytics UI', type: 'client', latency: '3ms', description: 'React dashboard for charts, filters, and reporting views' },
-      { id: '2', name: 'API Services', type: 'gateway', latency: '10ms', description: 'FastAPI routes for query execution and aggregation' },
-      { id: '3', name: 'Data Models', type: 'worker', latency: '18ms', description: 'Structured query and transformation layer for analytics views' },
-      { id: '4', name: 'Reporting Layer', type: 'ai', latency: '12ms', description: 'Summary and presentation logic for stakeholder-friendly output' },
-      { id: '5', name: 'Analytics Database', type: 'database', latency: '15ms', description: 'PostgreSQL storage for curated analytics and report state' },
+      { id: '1', name: 'Public Portal', type: 'client', latency: '—', description: 'Responsive bilingual pages for organization information and member access' },
+      { id: '2', name: 'Registration Flow', type: 'worker', latency: '—', description: 'Multi-step member registration with district, block, school, and designation details' },
+      { id: '3', name: 'Member Card View', type: 'client', latency: '—', description: 'Member-facing digital membership card with print support' },
+      { id: '4', name: 'Admin Dashboard', type: 'gateway', latency: '—', description: 'State, District, and Block-level member views with search, filtering, and approval actions' }
     ],
-    codeSnippets: [
-      {
-        filename: 'analytics_query.py',
-        language: 'python',
-        description: 'Backend aggregation for dashboard metrics and report summaries',
-        code: `def build_summary(query: str):
-    rows = fetch_rows(query)
-    return {
-        'count': len(rows),
-        'trend': summarize_trend(rows),
-        'status': classify_status(rows),
-    }`
-      }
-    ],
-    techStack: ['React', 'FastAPI', 'PostgreSQL', 'Python', 'JWT Authentication', 'Charting'],
+    codeSnippets: [],
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     impactMetrics: [
-      'Delivered a dashboard experience centered on clear reporting, reliable data flow, and practical product use.'
+      'Built and deployed a bilingual Hindi-English membership portal with responsive public pages, multi-step registration, subscription options, and printable digital membership cards.',
+      'Developed administrative dashboards for State, District, and Block-level member management, featuring search, filtering, approval workflows, and membership metrics.'
     ],
     keyFeatures: [
-      'Interactive dashboard',
-      'Structured analytics',
-      'Data modeling',
-      'Report-ready summaries',
-      'Frontend-backend integration'
+      'Hindi-first interface with English language toggle',
+      'Multi-step membership registration',
+      'District and Block selection with member details',
+      'Printable digital membership cards',
+      'State, District, and Block-level administrative dashboards',
+      'Member search, filtering, approval actions, and dashboard metrics'
     ],
-    tradeoffs: 'I focused the product on clarity and maintainability rather than trying to overfit it with every possible visualization. That made the implementation easier to extend and more appropriate for real business use.',
+    tradeoffs: 'The implementation prioritizes a clear, accessible user experience and a reusable component structure. The frontend is built with React and TypeScript; backend services and integrations should be described separately from the completed interface.',
     benchmarks: [],
-    githubUrl: "",
-    demoUrl: ""
+    githubUrl: 'https://github.com/harshvardhan-it/sssmp-portal',
+    demoUrl: ''
   }
 ];
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    period: '2026',
-    role: 'Google Gemini Student Ambassador',
-    company: 'Google',
+    period: '2026 – Present',
+    role: 'Google Student Ambassador (GSA)',
+    company: 'Google Student Ambassador Program',
     type: 'Leadership',
-    location: 'India',
-    description: 'Selected as a Google Gemini Student Ambassador for 2026, representing Gemini through student-focused content, community engagement, and practical AI experiences.',
+    location: 'SATI, Vidisha, India',
+    description: 'Student Ambassador representing Google Gemini through student engagement and practical Generative AI activities. GSA ID: 12669.',
     impactHighlights: [
-      'Create student-focused content that demonstrates practical ways Gemini can support ideation, learning, and creative workflows.',
-      'Participate in Gemini community activities and campaigns designed to help students discover useful generative AI workflows.',
-      'Represent Gemini in student communities while building hands-on experience in AI advocacy, communication, and community leadership.'
+      'Represent Google as a Student Ambassador, promoting Google Gemini and practical Generative AI adoption through student engagement and community activities.',
+      'Participated in student-facing initiatives including Gemini Product Trial and Build Night featuring Nano Banana, encouraging hands-on exploration of Google’s AI tools.'
     ],
-    technologies: ['Google Gemini', 'Generative AI', 'Content Creation', 'Community Engagement']
+    technologies: ['Google Gemini', 'Generative AI', 'Nano Banana', 'Community Engagement']
   },
   {
     period: 'June 2025 – July 2025',
@@ -312,12 +299,10 @@ export const EXPERIENCE: ExperienceItem[] = [
     location: 'India',
     description: 'At Calderys, I supported operational reporting and analytics for asset, inventory, and raw material data. My work focused on cleaning, validating, and presenting business data so the team could make better decisions from routine operational reporting.',
     impactHighlights: [
-      'Designed interactive Power BI dashboards to monitor 200+ employee assets, improving tracking efficiency by 25% and reducing manual reporting time by 30%.',
-      'Cleaned, validated, and transformed 1,000+ asset and inventory records using Microsoft Excel, reducing data inconsistencies by 20%.',
-      'Performed exploratory data analysis to support operational reporting, resource planning, and business decision-making.',
-      'Built reporting support that made operational information easier to access without relying on fragmented manual exports.'
+      'Used Power BI and Microsoft Excel to analyze asset, inventory, and raw material datasets and support operational reporting.',
+      'Cleaned, validated, and organized business records and developed data visualizations to improve reporting accessibility and support data-driven decisions.'
     ],
-    technologies: ['Power BI', 'Microsoft Excel', 'Python', 'SQL', 'Data Analysis']
+    technologies: ['Power BI', 'Microsoft Excel', 'Data Analysis', 'Business Reporting']
   }
 ];
 
@@ -336,8 +321,8 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: 'Backend',
     description: 'Creating backend services that connect data processing, APIs, and business workflows.',
     skills: [
-      { id: 'fastapi', name: 'FastAPI', level: 'Proficient', experience: 'Used in NeuroSync and PahchanAI backend flows', highlight: 'API structure, request handling, and workflow orchestration', usedInProjectIds: ['neurosync', 'pahchanai', 'calderys-data-analytics-dashboard'] },
-      { id: 'python', name: 'Python', level: 'Proficient', experience: 'Used in analysis and backend logic', highlight: 'Data processing, request orchestration, and report preparation', usedInProjectIds: ['neurosync', 'calderys-data-analytics-dashboard'] },
+      { id: 'fastapi', name: 'FastAPI', level: 'Proficient', experience: 'Used in NeuroSync and PahchanAI backend flows', highlight: 'API structure, request handling, and workflow orchestration', usedInProjectIds: ['neurosync', 'pahchanai', 'calderys-internship'] },
+      { id: 'python', name: 'Python', level: 'Proficient', experience: 'Used in analysis and backend logic', highlight: 'Data processing, request orchestration, and report preparation', usedInProjectIds: ['neurosync', 'calderys-internship'] },
       { id: 'apis', name: 'REST API Design', level: 'Proficient', experience: 'Used in product backend development', highlight: 'Clear routes, structured request/response contracts', usedInProjectIds: ['neurosync', 'pahchanai'] },
       { id: 'auth', name: 'Authentication', level: 'Proficient', experience: 'Used in NeuroSync product access workflows', highlight: 'JWT-based access control and protected routes', usedInProjectIds: ['neurosync'] },
     ]
@@ -346,18 +331,18 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: 'Databases',
     description: 'Working with structured data storage, data modeling, and reporting-oriented database design.',
     skills: [
-      { id: 'postgres', name: 'PostgreSQL', level: 'Proficient', experience: 'Used in NeuroSync and analytics-focused work', highlight: 'Structured storage, report state, and relational data design', usedInProjectIds: ['neurosync', 'calderys-data-analytics-dashboard'] },
-      { id: 'mysql', name: 'MySQL', level: 'Proficient', experience: 'Used in analytics and reporting workflows', highlight: 'Relational query design and cross-system reporting', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
-      { id: 'sqlite', name: 'SQLite', level: 'Proficient', experience: 'Used for lightweight dataset storage and prototyping', highlight: 'Quick local persistence for data cleanup and analysis', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
-      { id: 'sql', name: 'SQL', level: 'Proficient', experience: 'Used in reporting and data organization tasks', highlight: 'Basic query design and data shaping', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
-      { id: 'datamodels', name: 'Data Modeling', level: 'Proficient', experience: 'Applied in analysis and reporting work', highlight: 'Organizing data for clarity and maintainability', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
+      { id: 'postgres', name: 'PostgreSQL', level: 'Proficient', experience: 'Used in NeuroSync and analytics-focused work', highlight: 'Structured storage, report state, and relational data design', usedInProjectIds: ['neurosync', 'calderys-internship'] },
+      { id: 'mysql', name: 'MySQL', level: 'Proficient', experience: 'Used in analytics and reporting workflows', highlight: 'Relational query design and cross-system reporting', usedInProjectIds: ['calderys-internship'] },
+      { id: 'sqlite', name: 'SQLite', level: 'Proficient', experience: 'Used for lightweight dataset storage and prototyping', highlight: 'Quick local persistence for data cleanup and analysis', usedInProjectIds: ['calderys-internship'] },
+      { id: 'sql', name: 'SQL', level: 'Proficient', experience: 'Used in reporting and data organization tasks', highlight: 'Basic query design and data shaping', usedInProjectIds: ['calderys-internship'] },
+      { id: 'datamodels', name: 'Data Modeling', level: 'Proficient', experience: 'Applied in analysis and reporting work', highlight: 'Organizing data for clarity and maintainability', usedInProjectIds: ['calderys-internship'] },
     ]
   },
   {
     title: 'Programming Languages',
     description: 'Working across the languages most relevant to product and data-driven software development.',
     skills: [
-      { id: 'python-lang', name: 'Python', level: 'Proficient', experience: 'Used in backend processing and analysis workflows', highlight: 'Service logic, data handling, and AI-assisted orchestration', usedInProjectIds: ['neurosync', 'calderys-data-analytics-dashboard'] },
+      { id: 'python-lang', name: 'Python', level: 'Proficient', experience: 'Used in backend processing and analysis workflows', highlight: 'Service logic, data handling, and AI-assisted orchestration', usedInProjectIds: ['neurosync', 'calderys-internship'] },
       { id: 'javascript', name: 'JavaScript / TypeScript', level: 'Proficient', experience: 'Used in UI and application implementation', highlight: 'Product front-end and service integration', usedInProjectIds: ['neurosync', 'pahchanai'] },
     ]
   },
@@ -376,9 +361,9 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: 'Data Analytics',
     description: 'Turning data into useful reporting, analysis, and decision support.',
     skills: [
-      { id: 'excel', name: 'Excel', level: 'Proficient', experience: 'Used in Calderys reporting and data preparation work', highlight: 'Cleaning, organizing, and presenting operational data', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
-      { id: 'powerbi', name: 'Power BI', level: 'Proficient', experience: 'Used in internship reporting support', highlight: 'Dashboard-style reporting and data presentation', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
-      { id: 'reporting', name: 'Business Reporting', level: 'Proficient', experience: 'Applied in internship and analytics-focused work', highlight: 'Organizing reports around practical business needs', usedInProjectIds: ['calderys-data-analytics-dashboard'] },
+      { id: 'excel', name: 'Excel', level: 'Proficient', experience: 'Used in Calderys reporting and data preparation work', highlight: 'Cleaning, organizing, and presenting operational data', usedInProjectIds: ['calderys-internship'] },
+      { id: 'powerbi', name: 'Power BI', level: 'Proficient', experience: 'Used in internship reporting support', highlight: 'Dashboard-style reporting and data presentation', usedInProjectIds: ['calderys-internship'] },
+      { id: 'reporting', name: 'Business Reporting', level: 'Proficient', experience: 'Applied in internship and analytics-focused work', highlight: 'Organizing reports around practical business needs', usedInProjectIds: ['calderys-internship'] },
     ]
   },
   {
@@ -386,7 +371,7 @@ export const TECH_CATEGORIES: TechCategory[] = [
     description: 'Using practical tooling to develop, structure, and present software work clearly.',
     skills: [
       { id: 'git', name: 'Git', level: 'Proficient', experience: 'Used in portfolio and project development', highlight: 'Version control and iterative implementation', usedInProjectIds: ['neurosync', 'pahchanai'] },
-      { id: 'vscode', name: 'VS Code', level: 'Proficient', experience: 'Used throughout development work', highlight: 'Code editing, debugging, and project organization', usedInProjectIds: ['neurosync', 'pahchanai', 'calderys-data-analytics-dashboard'] },
+      { id: 'vscode', name: 'VS Code', level: 'Proficient', experience: 'Used throughout development work', highlight: 'Code editing, debugging, and project organization', usedInProjectIds: ['neurosync', 'pahchanai', 'calderys-internship'] },
     ]
   },
   {
@@ -395,7 +380,7 @@ export const TECH_CATEGORIES: TechCategory[] = [
     skills: [
       { id: 'ds', name: 'Data Structures', level: 'Proficient', experience: 'Applied through coursework and practical problem solving', highlight: 'Clear logic and robust implementation', usedInProjectIds: ['neurosync', 'pahchanai'] },
       { id: 'algorithms', name: 'Algorithms', level: 'Proficient', experience: 'Applied through coursework and practical engineering work', highlight: 'Reasoning about efficient problem solving', usedInProjectIds: ['neurosync', 'pahchanai'] },
-      { id: 'systems', name: 'Software Design', level: 'Proficient', experience: 'Used in structuring product systems and modules', highlight: 'Separation of concerns and maintainable code', usedInProjectIds: ['neurosync', 'calderys-data-analytics-dashboard'] },
+      { id: 'systems', name: 'Software Design', level: 'Proficient', experience: 'Used in structuring product systems and modules', highlight: 'Separation of concerns and maintainable code', usedInProjectIds: ['neurosync', 'calderys-internship'] },
     ]
   }
 ];
@@ -423,7 +408,7 @@ export const EDUCATION_TIMELINE = {
   degree: 'B.Tech Information Technology',
   institution: 'Samrat Ashok Technological Institute (SATI)',
   period: '2023–2027',
-  grade: 'Focused on software engineering, applied AI, and practical product building',
+  grade: 'CGPA: 7.86/10',
   relevantCoursework: [
     'Data Structures & Algorithms',
     'Database Management Systems',
