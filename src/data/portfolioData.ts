@@ -246,7 +246,7 @@ def analyze_dataset(payload: AnalysisRequest):
     tagline: 'Bilingual Digital Membership Registration & Management Platform',
     category: 'Full-Stack Product',
     featured: true,
-    image: '/assets/project_backend.png',
+    image: '/assets/project_sssmp.png',
     overview: 'A bilingual Hindi-English membership portal for a teachers’ organization in Madhya Pradesh. The product experience brings together public information, multi-step member registration, printable digital membership cards, and administrative views for the State → District → Block hierarchy.',
     problem: 'Membership workflows need to be accessible to members while giving administrators a structured way to review and manage records across multiple organizational levels.',
     solution: 'Built a responsive React and TypeScript interface with Hindi and English language support, guided registration, member-facing card views, and administrative dashboards for hierarchical member management.',
