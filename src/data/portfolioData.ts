@@ -237,7 +237,7 @@ def analyze_dataset(payload: AnalysisRequest):
     ],
     tradeoffs: 'The core tradeoff was to prioritize a clear recognition pipeline over a vague “AI-powered” experience. Separating detection, embeddings, similarity search, and match review makes the system easier to reason about, evaluate, and evolve.',
     benchmarks: [],
-    githubUrl: 'https://github.com/Harshwwe/PahchanAI',
+    githubUrl: 'https://github.com/harshvardhan-it/PahchanAI',
     demoUrl: 'https://pahchan-ai.vercel.app/'
   },
   {
@@ -321,8 +321,8 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: 'Backend',
     description: 'Creating backend services that connect data processing, APIs, and business workflows.',
     skills: [
-      { id: 'fastapi', name: 'FastAPI', level: 'Proficient', experience: 'Used in NeuroSync and PahchanAI backend flows', highlight: 'API structure, request handling, and workflow orchestration', usedInProjectIds: ['neurosync', 'pahchanai', 'calderys-internship'] },
-      { id: 'python', name: 'Python', level: 'Proficient', experience: 'Used in analysis and backend logic', highlight: 'Data processing, request orchestration, and report preparation', usedInProjectIds: ['neurosync', 'calderys-internship'] },
+      { id: 'fastapi', name: 'FastAPI', level: 'Proficient', experience: 'Used in NeuroSync and PahchanAI backend flows', highlight: 'API structure, request handling, and workflow orchestration', usedInProjectIds: ['neurosync', 'pahchanai'] },
+      { id: 'python', name: 'Python', level: 'Proficient', experience: 'Used in analysis and backend logic', highlight: 'Data processing, request orchestration, and report preparation', usedInProjectIds: ['neurosync'] },
       { id: 'apis', name: 'REST API Design', level: 'Proficient', experience: 'Used in product backend development', highlight: 'Clear routes, structured request/response contracts', usedInProjectIds: ['neurosync', 'pahchanai'] },
       { id: 'auth', name: 'Authentication', level: 'Proficient', experience: 'Used in NeuroSync product access workflows', highlight: 'JWT-based access control and protected routes', usedInProjectIds: ['neurosync'] },
     ]
@@ -331,18 +331,18 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: 'Databases',
     description: 'Working with structured data storage, data modeling, and reporting-oriented database design.',
     skills: [
-      { id: 'postgres', name: 'PostgreSQL', level: 'Proficient', experience: 'Used in NeuroSync and analytics-focused work', highlight: 'Structured storage, report state, and relational data design', usedInProjectIds: ['neurosync', 'calderys-internship'] },
-      { id: 'mysql', name: 'MySQL', level: 'Proficient', experience: 'Used in analytics and reporting workflows', highlight: 'Relational query design and cross-system reporting', usedInProjectIds: ['calderys-internship'] },
-      { id: 'sqlite', name: 'SQLite', level: 'Proficient', experience: 'Used for lightweight dataset storage and prototyping', highlight: 'Quick local persistence for data cleanup and analysis', usedInProjectIds: ['calderys-internship'] },
-      { id: 'sql', name: 'SQL', level: 'Proficient', experience: 'Used in reporting and data organization tasks', highlight: 'Basic query design and data shaping', usedInProjectIds: ['calderys-internship'] },
-      { id: 'datamodels', name: 'Data Modeling', level: 'Proficient', experience: 'Applied in analysis and reporting work', highlight: 'Organizing data for clarity and maintainability', usedInProjectIds: ['calderys-internship'] },
+      { id: 'postgres', name: 'PostgreSQL', level: 'Proficient', experience: 'Used in NeuroSync and analytics-focused work', highlight: 'Structured storage, report state, and relational data design', usedInProjectIds: ['neurosync'] },
+      { id: 'mysql', name: 'MySQL', level: 'Proficient', experience: 'Used in analytics and reporting workflows', highlight: 'Relational query design and cross-system reporting', usedInProjectIds: [] },
+      { id: 'sqlite', name: 'SQLite', level: 'Proficient', experience: 'Used for lightweight dataset storage and prototyping', highlight: 'Quick local persistence for data cleanup and analysis', usedInProjectIds: [] },
+      { id: 'sql', name: 'SQL', level: 'Proficient', experience: 'Used in reporting and data organization tasks', highlight: 'Basic query design and data shaping', usedInProjectIds: [] },
+      { id: 'datamodels', name: 'Data Modeling', level: 'Proficient', experience: 'Applied in analysis and reporting work', highlight: 'Organizing data for clarity and maintainability', usedInProjectIds: [] },
     ]
   },
   {
     title: 'Programming Languages',
     description: 'Working across the languages most relevant to product and data-driven software development.',
     skills: [
-      { id: 'python-lang', name: 'Python', level: 'Proficient', experience: 'Used in backend processing and analysis workflows', highlight: 'Service logic, data handling, and AI-assisted orchestration', usedInProjectIds: ['neurosync', 'calderys-internship'] },
+      { id: 'python-lang', name: 'Python', level: 'Proficient', experience: 'Used in backend processing and analysis workflows', highlight: 'Service logic, data handling, and AI-assisted orchestration', usedInProjectIds: ['neurosync'] },
       { id: 'javascript', name: 'JavaScript / TypeScript', level: 'Proficient', experience: 'Used in UI and application implementation', highlight: 'Product front-end and service integration', usedInProjectIds: ['neurosync', 'pahchanai'] },
     ]
   },
@@ -361,9 +361,9 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: 'Data Analytics',
     description: 'Turning data into useful reporting, analysis, and decision support.',
     skills: [
-      { id: 'excel', name: 'Excel', level: 'Proficient', experience: 'Used in Calderys reporting and data preparation work', highlight: 'Cleaning, organizing, and presenting operational data', usedInProjectIds: ['calderys-internship'] },
-      { id: 'powerbi', name: 'Power BI', level: 'Proficient', experience: 'Used in internship reporting support', highlight: 'Dashboard-style reporting and data presentation', usedInProjectIds: ['calderys-internship'] },
-      { id: 'reporting', name: 'Business Reporting', level: 'Proficient', experience: 'Applied in internship and analytics-focused work', highlight: 'Organizing reports around practical business needs', usedInProjectIds: ['calderys-internship'] },
+      { id: 'excel', name: 'Excel', level: 'Proficient', experience: 'Used in Calderys reporting and data preparation work', highlight: 'Cleaning, organizing, and presenting operational data', usedInProjectIds: [] },
+      { id: 'powerbi', name: 'Power BI', level: 'Proficient', experience: 'Used in internship reporting support', highlight: 'Dashboard-style reporting and data presentation', usedInProjectIds: [] },
+      { id: 'reporting', name: 'Business Reporting', level: 'Proficient', experience: 'Applied in internship and analytics-focused work', highlight: 'Organizing reports around practical business needs', usedInProjectIds: [] },
     ]
   },
   {
@@ -371,7 +371,7 @@ export const TECH_CATEGORIES: TechCategory[] = [
     description: 'Using practical tooling to develop, structure, and present software work clearly.',
     skills: [
       { id: 'git', name: 'Git', level: 'Proficient', experience: 'Used in portfolio and project development', highlight: 'Version control and iterative implementation', usedInProjectIds: ['neurosync', 'pahchanai'] },
-      { id: 'vscode', name: 'VS Code', level: 'Proficient', experience: 'Used throughout development work', highlight: 'Code editing, debugging, and project organization', usedInProjectIds: ['neurosync', 'pahchanai', 'calderys-internship'] },
+      { id: 'vscode', name: 'VS Code', level: 'Proficient', experience: 'Used throughout development work', highlight: 'Code editing, debugging, and project organization', usedInProjectIds: ['neurosync', 'pahchanai'] },
     ]
   },
   {
@@ -380,27 +380,38 @@ export const TECH_CATEGORIES: TechCategory[] = [
     skills: [
       { id: 'ds', name: 'Data Structures', level: 'Proficient', experience: 'Applied through coursework and practical problem solving', highlight: 'Clear logic and robust implementation', usedInProjectIds: ['neurosync', 'pahchanai'] },
       { id: 'algorithms', name: 'Algorithms', level: 'Proficient', experience: 'Applied through coursework and practical engineering work', highlight: 'Reasoning about efficient problem solving', usedInProjectIds: ['neurosync', 'pahchanai'] },
-      { id: 'systems', name: 'Software Design', level: 'Proficient', experience: 'Used in structuring product systems and modules', highlight: 'Separation of concerns and maintainable code', usedInProjectIds: ['neurosync', 'calderys-internship'] },
+      { id: 'systems', name: 'Software Design', level: 'Proficient', experience: 'Used in structuring product systems and modules', highlight: 'Separation of concerns and maintainable code', usedInProjectIds: ['neurosync'] },
     ]
   }
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    year: '2025',
-    title: 'Internship experience in data analysis and reporting',
-    organization: 'Calderys India Refractories Ltd.',
+    year: '2026',
+    title: 'Qualified GATE 2026 — Computer Science and Information Technology',
+    organization: 'GATE',
     type: 'Award',
-    description: 'Supported reporting workflows through data cleaning, dashboard support, and business reporting during an internship focused on operational information.',
-    badgeText: 'Internship'
+    description: 'Qualified GATE 2026 in Computer Science and Information Technology on the first attempt.',
+    badgeText: 'GATE Qualified',
+    proofLink: '/gate-2026-scorecard.pdf'
   },
   {
-    year: '2025',
-    title: 'Built portfolio projects centered on practical software work',
-    organization: 'Independent portfolio work',
+    year: '2026',
+    title: 'Data Analytics with Python',
+    organization: 'NPTEL',
     type: 'Certification',
-    description: 'Developed and refined case studies around NeuroSync, PahchanAI, and a data analytics dashboard to present tangible engineering work clearly.',
-    badgeText: 'Completed Projects'
+    description: 'Completed the NPTEL Data Analytics with Python certification.',
+    badgeText: 'NPTEL',
+    proofLink: '/nptel-data-analytics-python.pdf'
+  },
+  {
+    year: '2026',
+    title: 'Business Intelligence and Analytics',
+    organization: 'NPTEL',
+    type: 'Certification',
+    description: 'Completed the NPTEL Business Intelligence and Analytics certification.',
+    badgeText: 'NPTEL',
+    proofLink: '/nptel-business-intelligence-analytics.pdf'
   }
 ];
 
